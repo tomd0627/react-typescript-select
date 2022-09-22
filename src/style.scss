@@ -1,0 +1,121 @@
+// Colors
+
+$white: #fff;
+$off-black: #333;
+$dark-gray: #777;
+$light-blue: hsl(200, 100%, 50%);
+$lighter-blue: hsl(200, 100%, 50%);
+$red: hsl(0, 100%, 50%);
+$light-red: hsl(0, 100%, 90%);
+
+#root {
+  height: 100vh;
+}
+
+.select {
+  &-container {
+    position: relative;
+    width: 100%;
+    min-height: 1.5em;
+    border: 0.05em solid $dark-gray;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em;
+    border-radius: 0.25em;
+    outline: none;
+
+    &:focus {
+      border-color: $light-blue;
+    }
+  }
+
+  &__value {
+    flex-grow: 1;
+    display: flex;
+    gap: 0.5em;
+    flex-wrap: wrap;
+  }
+
+  &__clear {
+    background: none;
+    color: $dark-gray;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+
+    &:focus,
+    &:hover {
+      color: $off-black;
+    }
+  }
+
+  &__divider {
+    background-color: $dark-gray;
+    align-self: stretch;
+    width: 0.05em;
+  }
+
+  &__options {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: none;
+    max-height: 15em;
+    overflow-y: auto;
+    border: 0.05em solid $dark-gray;
+    border-radius: 0.25em;
+    width: 100%;
+    left: 0;
+    top: calc(100% + 0.25em);
+    background-color: $white;
+    z-index: 100;
+
+    &.show {
+      display: block;
+    }
+  }
+
+  &__option {
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+
+    &.selected {
+      background-color: $lighter-blue;
+    }
+
+    &.highlight {
+      background-color: $light-blue;
+      color: $white;
+    }
+
+    &-badge {
+      display: flex;
+      align-items: center;
+      border: 0.05em solid $dark-gray;
+      border-radius: 0.25em;
+      padding: 0 0.25em;
+      gap: 0.25em;
+      cursor: pointer;
+      background: none;
+      outline: none;
+
+      &:focus,
+      &:hover {
+        background-color: $light-red;
+        border-color: $red;
+
+        .remove {
+          color: $red;
+        }
+      }
+
+      .remove {
+        font-size: 0.75em;
+        color: $dark-gray;
+      }
+    }
+  }
+}
